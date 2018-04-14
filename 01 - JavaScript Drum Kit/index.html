@@ -69,7 +69,7 @@
   const items = Array.from(document.querySelectorAll('.key'))
   debugger
   items.forEach((item)=>{
-    item.addEventListener('transitionend', function() {
+    item.addEventListener('transitionend', function () {
       this.classList.remove('playing')
     })
   })
