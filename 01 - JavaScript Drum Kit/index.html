@@ -60,11 +60,18 @@
 <script>
   window.addEventListener('keydown',(e)=>{
     let keyCode = e.which;
-    document.querySelector(`audio[data-key="${keyCode}"]`).play()
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`)
+    if (!audio)return // return when there is no link between pressed button and an audio
+    audio.play()
     document.querySelector(`div[data-key="${keyCode}"]`).classList.add('playing')
-    setTimeout(() => {
-      document.querySelector(`div[data-key="${keyCode}"]`).classList.remove('playing')
-    }, 100);
+  })
+
+  const items = Array.from(document.querySelectorAll('.key'))
+  debugger
+  items.forEach((item)=>{
+    item.addEventListener('transitionend', function() {
+      this.classList.remove('playing')
+    })
   })
 </script>
 
